@@ -1,87 +1,104 @@
-import { watchFile, unwatchFile } from 'fs';
-import * as cheerio from 'cheerio';
-import { getDevice } from '@whiskeysockets/baileys';
-import yts from 'yt-search';
-import axios from 'axios';
-import fg from 'api-dylux';
-import fs from 'fs';
-import fetch from 'node-fetch';
-import * as type from 'file-type';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { watchFile, unwatchFile } from 'fs' 
+import chalk from 'chalk'
+import { fileURLToPath } from 'url'
+import fs from 'fs'
+import cheerio from 'cheerio'
+import fetch from 'node-fetch'
+import axios from 'axios'
+import moment from 'moment-timezone' 
+
+//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
+// ╭━━━╮╱╱╱╱╱╭╮╱╱╭━━━╮╱╱╱╭╮
+// ┃╭━╮┃╱╱╱╱╱┃┃╱╱┃╭━╮┃╱╱╱┃┃
+// ┃┃╱┃┣━━┳━━┫╰━╮┃┃╱┃┣━━┳┫┃╭┳━━┳━╮
+// ┃┃╱┃┃┃━┫┃━┫╭╮┃┃┃╱┃┃╭╮┣┫╰╯┫╭╮┃╭╯
+// ┃╰━╯┃┃━┫┃━┫┃┃┃┃╰━╯┃╭╮┃┃╭╮┫╭╮┃┃
+// ╰━━━┻━━┻━━┻╯╰╯╰━━━┻╯╰┻┻╯╰┻╯╰┻╯
+// ╭━╮╭━┳━━┳╮╱╭┳━━━┳━━━┳━╮╭━╮
+// ┃┃╰╯┃┣╮╭┫┃╱┃┃╭━╮┃╭━╮┃┃╰╯┃┃
+// ┃╭╮╭╮┃┃┃┃╰━╯┃╰━╯┃┃╱┃┃╭╮╭╮┃
+// ┃┃┃┃┃┃┃┃┃╭━╮┃╭━━┫╰━╯┃┃┃┃┃┃
+// ┃┃┃┃┃┣╯╰┫┃╱┃┃┃╱╱┃╭━╮┃┃┃┃┃┃
+// ╰╯╰╯╰┻━━┻╯╱╰┻╯╱╱╰╯╱╰┻╯╰╯╰╯
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.botnumber = "";
-global.confirmCode = "";
-
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
-
+// ⚙️ PROPIETARIO Y STAFF
 global.owner = [
-  ['525653326435', 'Ledy', true]
+['527299422344', '🔰 Creador 🔰', true],
+['5217227584934', 'Angel', true],
+['573001533523', 'BʀᴀʏᴀɴXD', true],
+['5212202410659', 'Destroy', true],
+//['numero', 'nombre', true],
 ];
 
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
+//si no saben no toquen gracias 🫂 
+global.mods = ['50433191934'];
+global.suittag = ['50433191934'];
+global.prems = [];
 
-global.mods = [''];
-global.prems = [''];
+// 📚 INFORMACIÓN GENERAL
+global.libreria = 'Baileys';
+global.baileys = '@whiskeysockets/baileys';
+global.nameqr = 'Harry-Botter';
+global.namebot = 'Harry-Botter';
+global.sessions = 'Sessions';
+global.jadi = 'JadiBots';
+global.pikaJadibts = true;
 
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
+// ✨ DATOS DE ESTILO Y METADATOS
+global.packname = '🧃 Harry-Botter MD';
+global.botname = '⚡ Harry-Botter ⚡';
+global.wm = 'HarryBotter-MD';
+global.dev = '© Desarrollado por Reykyl';
+global.textbot = 'Harry Botter • Potenciado por Reykyl';
+global.etiqueta = 'Team Reykyl ⚡';
 
-global.packname = 'Luna Bot';
-global.footer = "La Mejor Bot De Whatsapp";
-global.author = `Ledy`;
-global.wm = 'Luna Bot';
-global.namechannel = 'Luna Bot';
-global.canal = 'https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17';
-
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
-
-global.imagen0 = fs.readFileSync('./src/Luna_logo.jpg');
-global.imagen = fs.readFileSync('./src/Luna.jpg');
-global.imagen3 = 'https://telegra.ph/file/62fa3e30dc861a3fde73b.jpg';
-
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
-
-global.botname = 'Luna Bot';
-global.menu = "https://ibb.co/t5cQsvT";
-global.fglog = 'https://ibb.co/t5cQsvT';
-
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
-
-global.jadi = "Sesiones/Subbots";
-global.syl = "Sesiones/Principal";
+// 💰 MONEDA Y AVATARES
+global.moneda = 'galeones';
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.axios = axios;
-global.fs = fs;
-global.cheerio = cheerio;
-global.fg = fg;
-global.path = path;
-global.yts = yts;
-global.fetch = fetch;
-global.fileType = type;
+global.catalogo = fs.readFileSync('./src/catalogo.jpg');
+global.photoSity = [catalogo]
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.wait = 'Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ, sᴏʏ ʟᴇɴᴛᴀ...';
-global.rwait = '⌛';
-global.dmoji = '🤘';
-global.done = '✅';
-global.error = '✖';
-global.xmoji = '🤫';
+global.gp1 = 'https://chat.whatsapp.com/EBVB73G2YilGpJOrJC23jS?mode=r_c'
+global.channel2 = 'https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17'
+global.md = 'https://gitlab.com/kipitop/botter'
+global.correo = 'reyes@kipi.top'
+global.cn ='https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17';
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.multiplier = 69;
-global.maxwarn = '2';
+global.catalogo = fs.readFileSync('./src/catalogo.jpg');
+global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: packname, orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
+global.ch = {
+ch1: '120363398846935909@newsletter',
+}
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-let file = fileURLToPath(import.meta.url);
+global.MyApiRestBaseUrl = 'https://api.cafirexos.com';
+global.MyApiRestApikey = 'BrunoSobrino';
+global.openai_org_id = 'org-3';
+global.openai_key = 'sk-0';
+global.keysZens = ['LuOlangNgentot', 'c2459db922', '37CC845916', '6fb0eff124', 'hdiiofficial', 'fiktod', 'BF39D349845E', '675e34de8a', '0b917b905e6f'];
+global.keysxxx = keysZens[Math.floor(keysZens.length * Math.random())];
+global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c71a2fb', '5bd33b276d41d6b4', 'HIRO', 'kurrxd09', 'ebb6251cc00f9c63'];
+global.keysxteam = keysxteammm[Math.floor(keysxteammm.length * Math.random())];
+global.keysneoxrrr = ['5VC9rvNx', 'cfALv5'];
+global.keysneoxr = keysneoxrrr[Math.floor(keysneoxrrr.length * Math.random())];
+global.lolkeysapi = ['kurumi']; // ['BrunoSobrino_2']
+global.itsrose = ['4b146102c4d500809da9d1ff'];
+
+
+//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
+
+let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
-  unwatchFile(file);
-  console.log("Update 'config.js'");
-  import(`${file}?update=${Date.now()}`);
-});
+  unwatchFile(file)
+  console.log(chalk.redBright("Update 'config.js'"))
+  import(`${file}?update=${Date.now()}`)
+})
