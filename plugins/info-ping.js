@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
     let sysinfo = stdout.toString('utf-8').replace(/Memory:/, 'Ram:')
 
     const text = `
-╭━━━⊰ ⚡ *Pikachu-Bot* ⚡ ⊱━━━╮
+╭━━━⊰ ⚡ *Harry-Bot* ⚡ ⊱━━━╮
 ┃ ⚡ *Estado:* ¡Activo y cargado!
 ┃ 🕒 *Velocidad:* ${latensi.toFixed(4)} ms
 ╰━━━━━━━━━━━━━━━━━━━━━━━╯
@@ -30,7 +30,7 @@ let handler = async (m, { conn }) => {
               text: text
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: 'Pikachu Bot by Deylin'
+              text: 'Harry Botter by Reykyl'
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               hasMediaAttachment: false
@@ -40,7 +40,7 @@ let handler = async (m, { conn }) => {
                 {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
-                    display_text: '✐ Canal oficial',
+                    display_text: '✐ Canal Oficial',
                     url: 'https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m',
                     merchant_url: 'https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m'
                   })
