@@ -1,4 +1,4 @@
-<h1 align="center">⚡ Harry Botter ⚡by Reykyl</h1>
+<h1 align="center">⚡ Harry Botter ⚡ by Reykyl</h1>
 <p align="center">
 
 

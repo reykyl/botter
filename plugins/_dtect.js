@@ -21,10 +21,10 @@ nombre = `
 
 foto = `
 🖼️ *¡Cambio de imagen!*
-🐭 *${usuario}* ha lanzado un *Ataque Estilo* sobre:
+🐭 *${usuario}* ha lanzado un *hechizo* sobre:
 📍 *${groupMetadata.subject}*
 
-✨ ¡La imagen del grupo ha evolucionado!
+✨ ¡La imagen del grupo ha sido hechizada!
 `
 
 edit = `
@@ -61,7 +61,7 @@ ${m.messageStubParameters[0] == 'on'
 
 admingp = `
 🧢 *¡Subida de rango!*
-🎖️ *@${m.messageStubParameters[0].split`@`[0]}* ha evolucionado a *Prefecto (Admin)*
+🎖️ *@${m.messageStubParameters[0].split`@`[0]}* ha sido nombrado a *Prefecto (Admin)*
 
 👑 Acción autorizada por: *${usuario}*
 ⚡ ¡Que aproveche su nuevo poder con sabiduría!
@@ -72,7 +72,7 @@ noadmingp = `
 😿 *@${m.messageStubParameters[0].split`@`[0]}* ha perdido su rango de *Prefecto*
 
 📉 Acción realizada por: *${usuario}*
-🍃 Volvió a su forma base.
+🍃 Volvió a su antiguo rango.
 `
 
 if (chat.detect && m.messageStubType == 21) {

@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
     let sysinfo = stdout.toString('utf-8').replace(/Memory:/, 'Ram:')
 
     const text = `
-╭━━━⊰ ⚡ *Harry-Bot* ⚡ ⊱━━━╮
+╭━━━⊰ ⚡ *Harry-Botter* ⚡ ⊱━━━╮
 ┃ ⚡ *Estado:* ¡Activo y cargado!
 ┃ 🕒 *Velocidad:* ${latensi.toFixed(4)} ms
 ╰━━━━━━━━━━━━━━━━━━━━━━━╯
@@ -41,8 +41,8 @@ let handler = async (m, { conn }) => {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
                     display_text: '✐ Canal Oficial',
-                    url: 'https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m',
-                    merchant_url: 'https://whatsapp.com/channel/0029VawF8fBBvvsktcInIz3m'
+                    url: 'https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17',
+                    merchant_url: 'https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17'
                   })
                 }
               ]
