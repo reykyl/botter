@@ -89,10 +89,10 @@ ${readMore}`
     menuText += `\n\n*⚡ © Powered by Reykyl - Harry BOTter* 🪄`
 
     const imageUrl = [
-      'https://qu.ax/lTFMY.jpg',
-      'https://qu.ax/mLrJb.jpg',
-      'https://qu.ax/Upjzz.jpg',
-      'https://qu.ax/jnHyG.jpg'
+      'https://harryp.club/hb.jpg',
+      'https://harryp.club/hb1.jpg',
+      'https://harryp.club/hb2.jpg',
+      'https://harryp.club/hb3.jpg'
     ]
     const selectedImage = imageUrl[Math.floor(Math.random() * imageUrl.length)]
     const imageBuffer = await (await fetch(selectedImage)).buffer()

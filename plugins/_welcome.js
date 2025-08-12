@@ -33,7 +33,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   const date = new Date().toLocaleString("es-ES", { timeZone: "America/Mexico_City" });
 
   const pais = await obtenerPais(who);
-  let ppUser = 'https://qu.ax/jnHyG.jpg';
+  let ppUser = 'https://harryp.club/hb.jpg';
 
   try {
     ppUser = await conn.profilePictureUrl(who, 'image');
