@@ -4,7 +4,7 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
 
   let chat = global.db.data.chats[m.chat];
 
-  if (command === 'pikachu') {
+  if (command === 'bot') {
     if (args.length === 0) {
       const estado = chat.isBanned ? '⚠️ *DESCARGADO*' : '⚡ *CARGADO*';
       const info = `🔋 *CENTRO DE CONTROL DE HARRY BOT* ⚡
@@ -34,9 +34,9 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
   }
 };
 
-handler.help = ['potter'];
+handler.help = ['bot'];
 handler.tags = ['grupo'];
-handler.command = ['potter'];
+handler.command = ['bot'];
 handler.admin = true;
 
 export default handler;
