@@ -4,14 +4,14 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
 
   let chat = global.db.data.chats[m.chat];
 
-  if (command === 'bot') {
+  if (command === 'harry') {
     if (args.length === 0) {
       const estado = chat.isBanned ? '⚠️ *DESCARGADO*' : '⚡ *CARGADO*';
       const info = `🔋 *CENTRO DE CONTROL DE HARRY BOT* ⚡
 ╭━━━━━━━━━━━━━━━━━━━━━━━╮  
 ┃ *🎮 COMANDOS DE ENERGÍA:*  
-┃ ✧ *${usedPrefix}potter on* – ⚡ Encender
-┃ ✧ *${usedPrefix}potter off* – 💤 Apagar
+┃ ✧ *${usedPrefix}harry on* – ⚡ Encender
+┃ ✧ *${usedPrefix}harry off* – 💤 Apagar
 ╰━━━━━━━━━━━━━━━━━━━━━━━╯  
 📡 *Estado actual:* ${estado}`;
 
@@ -34,9 +34,9 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
   }
 };
 
-handler.help = ['bot'];
+handler.help = ['harry'];
 handler.tags = ['grupo'];
-handler.command = ['bot'];
+handler.command = ['harry'];
 handler.admin = true;
 
 export default handler;

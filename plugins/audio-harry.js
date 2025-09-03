@@ -20,8 +20,8 @@ https://whatsapp.com/channel/0029VbA1fHwHltYIjc93vc17
 }
 
 
-handler.command = ['harry']
+handler.command = ['potter']
 handler.tags = ['social']
-handler.help = ['harry']
+handler.help = ['potter']
 
 export default handler
